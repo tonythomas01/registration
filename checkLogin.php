@@ -15,7 +15,14 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
 	if ( !mysql_select_db( $database ) ) {
 		return false;
 	}
-	$email = $_GET['email'];
+	//I see vulnerabilities in the below code
+	//$email = $_GET['email'];
+	$email = test_input($_GET["email"]);
+	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+	 echo "Invalid email format"; 
+	}
+	
+	
 	$password = $_GET['password'];
 
 	$sql = "SELECT * FROM `user` WHERE `email`= '$email' AND `password`='$password';";
