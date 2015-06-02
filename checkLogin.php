@@ -21,7 +21,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
 	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 	 echo "Invalid email format"; 
 	}
-	}
+	
 	
 	$password = $_GET['password'];
 
