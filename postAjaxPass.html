@@ -1,0 +1,16 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<script>
+function checkPass() {
+	$.post( "checkLogin.php", { email: "test@test.com", password: "test" }).done(function( data ) {
+		// You should comppare if (data) is the same as what you typed in in the orginal text box. 
+	});
+}
+
+</script>
+
+<body>
+	<button onClick="checkPass()"> Check Pass </button>
+</body>

@@ -1,28 +1,29 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: tony
- * Date: 5/5/15
- * Time: 11:02 AM
- */
-if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
-	$mysqlUser = '';
-	$mysqlPassword = '';
-	$mysqlServer = 'localhost';
-	$database = 'registration';
-	$conn = mysql_connect( $mysqlServer, $mysqlUser, $mysqlPassword );
 
-	if ( !mysql_select_db( $database ) ) {
-		return false;
-	}
-	$name = $_GET['name'];
-	$age = $_GET['age'];
-	$email = $_GET['email'];
-	$password = $_GET['password'];
 
-	$sql="INSERT INTO `user`(`name`, `age`, `email`, `password`) VALUES ( '$name' ,'$age', '$email' , '$password' );";
+echo "Yay! The request is here in recieve.php";
 
-	if ( mysql_query( $sql ) ) {
-		echo "Data Inserted correctly";
-	}
+$email = $_GET['email'];
+$passworsd = $_GET['pass'];
+
+echo "I got the username as $email and password as $passworsd";
+
+$mysqlhost = 'localhost';
+$mysqlusername = 'root';
+$mysqlpassword = 'toor';
+
+if ( mysql_connect($mysqlhost,$mysqlusername, $mysqlpassword) ) {
+	echo "connection succesfull";
+}
+
+if ( mysql_select_db("registration") ) {
+	echo "Selected db succesfully";
+}
+
+$sql = "INSERT INTO `user`(`user_email`, `user_password`) VALUES ('$email','$passworsd')";
+
+echo $sql;
+
+if ( mysql_query( $sql ) ) {
+	echo "Yay! Inserted";
 }
